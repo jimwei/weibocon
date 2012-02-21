@@ -16,15 +16,15 @@ public interface IWeiboAPI {
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 uid
 	 * false int64 需要查询的用户ID。 screen_name false string 需要查询的用户昵称。
 	 */
-	public UserInfo getUser(String source, String accessToken, Long uid);
+	public UserInfo getUser(Integer weiboType, String accessToken, Long uid);
 
 	/*
 	 * 获取指定user的粉丝，关注，微博数 source false string
 	 * 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。 access_token false string
 	 * 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 uid true string 需要获取数据的用户UID，
 	 */
-	public Hashtable getUser_RelationsCounts(String source, String accessToken,
-			Long uid);
+	public Hashtable getUser_RelationsCounts(Integer weiboType,
+			String accessToken, Long uid);
 
 	/*
 	 * 获取两个用户之间的详细关注关系情况 :friendships/show source false string
@@ -32,7 +32,7 @@ public interface IWeiboAPI {
 	 * 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 source_id false int64 源用户的UID。
 	 * target_id false int64 目标用户的UID。
 	 */
-	public Relation getRelation(String source, String access_token,
+	public Relation getRelation(Integer weiboType, String access_token,
 			int source_id, int target_id);
 
 	/*
@@ -42,7 +42,7 @@ public interface IWeiboAPI {
 	 * count false int 单页返回的记录条数，默认为50，最大不超过200。 cursor false int
 	 * 返回结果的游标，下一页用返回值里的next_cursor，上一页用previous_cursor，默认为0。
 	 */
-	public List<UserInfo> getFriends(UserType userType, String source,
+	public List<UserInfo> getFriends(Integer weiboType, UserType userType,
 			String access_toekn, Long uid, int count, int cursor);
 
 	/*
@@ -55,7 +55,7 @@ public interface IWeiboAPI {
 	 * 是否只获取当前应用的数据。0为否（所有数据），1为是（仅当前应用），默认为0。 feature false int
 	 * 过滤类型ID，0：全部、1：原创、2：图片、3：视频、4：音乐，默认为0。
 	 */
-	public List<Status> getHomeStatus(String source, String access_token,
+	public List<Status> getHomeStatus(Integer weiboType, String access_token,
 			Long since_id, Long max_id, int count, int page, int base_app,
 			int feature);
 
@@ -70,7 +70,7 @@ public interface IWeiboAPI {
 	 * 过滤类型ID，0：全部、1：原创、2：图片、3：视频、4：音乐，默认为0。 trim_user false int
 	 * 返回值中user信息开关，0：返回完整的user信息、1：user字段仅返回user_id，默认为0。
 	 */
-	public List<Status> getUserStatus(String source, String access_token,
+	public List<Status> getUserStatus(Integer weiboType, String access_token,
 			Long uid, int since_id, int max_id, int count, int page,
 			int base_app, int feature, int trim_user);
 
@@ -84,7 +84,7 @@ public interface IWeiboAPI {
 	 * 纬度，有效范围：-90.0到+90.0，+表示北纬，默认为0.0。 long false float
 	 * 经度，有效范围：-180.0到+180.0，+表示东经，默认为0.0。
 	 */
-	public Boolean publishStatus(String source, String access_token,
+	public Boolean publishStatus(Integer weiboType, String access_token,
 			String status, byte[] pic, float lat, float longi);
 
 	/*
@@ -92,7 +92,7 @@ public interface IWeiboAPI {
 	 * 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。 access_token false string
 	 * 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 id true int64 需要删除的微博ID。
 	 */
-	public Boolean DeleteStatus(String source, String access_token, Long id);
+	public Boolean DeleteStatus(Integer weiboType, String access_token, Long id);
 
 	/*
 	 * 转发一条微博 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
@@ -101,8 +101,8 @@ public interface IWeiboAPI {
 	 * 添加的转发文本，必须做URLencode，内容不超过140个汉字，不填则默认为“转发微博”。 is_comment false int
 	 * 是否在转发的同时发表评论，0：否、1：评论给当前微博、2：评论给原微博、3：都评论，默认为0 。
 	 */
-	public boolean TransferStatus(String source, String access_token, Long id,
-			String status, int is_comment);
+	public boolean TransferStatus(Integer weiboType, String access_token,
+			Long id, String status, int is_comment);
 
 	/*
 	 * 获取微博官方表情的详细信息 source false string
@@ -111,7 +111,7 @@ public interface IWeiboAPI {
 	 * 表情类别，face：普通表情、ani：魔法表情、cartoon：动漫表情，默认为face。 language false string
 	 * 语言类别，cnname：简体、twname：繁体，默认为cnname。
 	 */
-	public List<Emotion> getEmotions(String source, String access_token,
+	public List<Emotion> getEmotions(Integer weiboType, String access_token,
 			String type, String language);
 
 	/*
@@ -121,7 +121,7 @@ public interface IWeiboAPI {
 	 * 评论内容，必须做URLencode，内容不超过140个汉字。 id true int64 需要评论的微博ID。 comment_ori false
 	 * int 当评论转发微博时，是否评论给原微博，0：否、1：是，默认为0。
 	 */
-	public Boolean createComment(String source, String access_token,
+	public Boolean createComment(Integer weiboType, String access_token,
 			String comment, Long id, int comment_ori);
 
 	/*
@@ -133,15 +133,17 @@ public interface IWeiboAPI {
 	 * 回复中是否自动加入“回复@用户名”，0：是、1：否，默认为0。 comment_ori false int
 	 * 当评论转发微博时，是否评论给原微博，0：否、1：是，默认为0。
 	 */
-	public Boolean replyComment(String source, String access_token, Long cid,
-			Long id, String comment, int without_mention, int comment_ori);
+	public Boolean replyComment(Integer weiboType, String access_token,
+			Long cid, Long id, String comment, int without_mention,
+			int comment_ori);
 
 	/*
 	 * 删除一条评论 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 cid
 	 * true int64 要删除的评论ID，只能删除登录用户自己发布的评论。
 	 */
-	public Boolean deleteComment(String source, String access_token, Long cid);
+	public Boolean deleteComment(Integer weiboType, String access_token,
+			Long cid);
 
 	/*
 	 * 获取标签 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
@@ -149,22 +151,23 @@ public interface IWeiboAPI {
 	 * true int64 要获取的标签列表所属的用户ID。 count false int 单页返回的记录条数，默认为20。 page false
 	 * int 返回结果的页码，默认为1。
 	 */
-	public List<Tag> getOwnerTag(String source, String access_token, Long uid,
-			int count, int page);
+	public List<Tag> getOwnerTag(Integer weiboType, String access_token,
+			Long uid, int count, int page);
 
 	/*
 	 * 获取批量标签 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 uids
 	 * true string 要获取标签的用户ID。最大20，逗号分隔。
 	 */
-	public List<Tag> getBatchTags(String source, String access_token, Long uid);
+	public List<Tag> getBatchTags(Integer weiboType, String access_token,
+			Long uid);
 
 	/*
 	 * 获取推荐的标签 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 count
 	 * false int 返回记录数，默认10，最大10。
 	 */
-	public List<Tag> getSuggestionTags(String source, String access_token,
+	public List<Tag> getSuggestionTags(Integer weiboType, String access_token,
 			int count);
 
 	/*
@@ -174,21 +177,21 @@ public interface IWeiboAPI {
 	 * 要创建的一组标签，用半角逗号隔开，每个标签的长度不可超过7个汉字，14个半角字符。 注意事项
 	 * 无论调用该接口次数多少，每个用户最多可以创建10个标签
 	 */
-	public Boolean createTag(String source, String access_token, String tags);
+	public Boolean createTag(Integer weiboType, String access_token, String tags);
 
 	/*
 	 * 删除标签 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。
 	 * tag_id true int64 要删除的标签ID。
 	 */
-	public Boolean deleteTag(String source, String access_token, Long tag_id);
+	public Boolean deleteTag(Integer weiboType, String access_token, Long tag_id);
 
 	/*
 	 * 批量删除标签 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 ids
 	 * true string 要删除的一组标签ID，以半角逗号隔开，一次最多提交10个ID。 用户只能删除自己的标签
 	 */
-	public Boolean deleteBatchTags(String source, String access_token,
+	public Boolean deleteBatchTags(Integer weiboType, String access_token,
 			String ids);
 
 	/*
@@ -196,23 +199,23 @@ public interface IWeiboAPI {
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 uid
 	 * false int64 需要关注的用户ID。 screen_name false string 需要关注的用户昵称。
 	 */
-	public Boolean createFriends(String source, String access_token, Long uid,
-			String screen_name);
+	public Boolean createFriends(Integer weiboType, String access_token,
+			Long uid, String screen_name);
 
 	/*
 	 * 取消对某人的关注 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 uid
 	 * false int64 需要取消关注的用户ID。 screen_name false string 需要取消关注的用户昵称。
 	 */
-	public Boolean deleteFriends(String source, String access_token, Long uid,
-			String screen_name);
+	public Boolean deleteFriends(Integer weiboType, String access_token,
+			Long uid, String screen_name);
 
 	/*
 	 * 更新某人的关注 source false string 采用OAuth授权方式不需要此参数，其他授权方式为必填参数，数值为应用的AppKey。
 	 * access_token false string 采用OAuth授权方式为必填参数，其他授权方式不需要此参数，OAuth授权后获得。 uid
 	 * true int64 需要修改备注信息的用户UID。 remark true string 备注信息，需要URLencode。
 	 */
-	public Boolean updateFiends(String source, String access_toekn, Long uid,
-			String remark);
+	public Boolean updateFiends(Integer weiboType, String access_toekn,
+			Long uid, String remark);
 
 }
