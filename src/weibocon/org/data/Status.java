@@ -25,6 +25,22 @@ public class Status {
 	private Boolean Self;
 	private Integer Type;
 	private Integer Comments_count;
+	private Integer WeiboType;
+
+	/**
+	 * @return the weiboType
+	 */
+	public Integer getWeiboType() {
+		return WeiboType;
+	}
+
+	/**
+	 * @param weiboType
+	 *            the weiboType to set
+	 */
+	public void setWeiboType(Integer weiboType) {
+		WeiboType = weiboType;
+	}
 
 	/**
 	 * @return the comments_count
