@@ -7,39 +7,45 @@ import weibocon.org.data.UserInfo;
 
 public interface IWeiboFacade {
 
+	public String login();
+
 	/*
 	 * 添加user
 	 */
-	public Boolean AddUser(UserInfo user);
+	public Boolean addUser(UserInfo user);
 
 	/*
-	 * 获取user
+	 * 获取指定uid的user
 	 */
-	public List<UserInfo> GetUserInfo();
+	public List<UserInfo> getUserInfo(Boolean local, Integer weiboType,
+			Integer uid);
 
 	/*
 	 * 更新user
 	 */
-	public Boolean UpdateUserInfo(UserInfo user);
+	public Boolean updateUserInfo(Boolean local, UserInfo user);
 
 	/*
 	 * 删除user
 	 */
-	public Boolean DeleteUserInfo(UserInfo user);
+	public Boolean deleteUserInfo(Boolean local, UserInfo user);
 
 	/*
 	 * 获取微博
 	 */
-	public List<Status> GetStatus(Integer weiboType, Integer page, Integer uid);
+	public List<Status> getStatus(Boolean local, Integer weiboType,
+			Integer page, Integer uid);
 
 	/*
 	 * 删除微博
 	 */
-	public Boolean DeleteStatus(Integer id);
+	public Boolean deleteStatus(Boolean local, Integer id);
 
 	/*
 	 * 添加微博
 	 */
-	public Boolean AddStatus(List<Status> statusList);
+	public Boolean addStatus(Boolean local, List<Status> statusList);
+
+	// TODO:原文转发，转发，评论,收藏，
 
 }
