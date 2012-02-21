@@ -81,222 +81,225 @@ public class WeiBoSqliteOpenHelper extends SQLiteOpenHelper {
 		sql.append("Uid Integer,");
 		sql.append("Name Nvarchar(20),");
 		sql.append("Nick Nvarchar(10),");
-		sql.append("URL Nvarchar(50),");
-		sql.append("Domain Nvarchar(50),");
+		// sql.append("URL Nvarchar(50),");
+		// sql.append("Domain Nvarchar(50),");
 		sql.append("Head Nvarchar(50),");
-		sql.append("Location Nvarchar(50),");
-		sql.append("Isvip Bool,");
-		sql.append("Isent Bool,");
-		sql.append("Email Nvarchar(50),");
-		sql.append("Introduction Nvarchar(100),");
-		sql.append("Birth_Year Integer,");
-		sql.append("Birth_Month Integer,");
-		sql.append("Birth_Day Integer,");
-		sql.append("Country_Code Integer,");
-		sql.append("Province_Code Integer,");
-		sql.append("City_Code Integer,");
+		// sql.append("Location Nvarchar(50),");
+		// sql.append("Isvip Bool,");
+		// sql.append("Isent Bool,");
+		// sql.append("Email Nvarchar(50),");
+		// sql.append("Introduction Nvarchar(100),");
+		// sql.append("Birth_Year Integer,");
+		// sql.append("Birth_Month Integer,");
+		// sql.append("Birth_Day Integer,");
+		// sql.append("Country_Code Integer,");
+		// sql.append("Province_Code Integer,");
+		// sql.append("City_Code Integer,");
 		sql.append("Sex Integer,");
-		sql.append("FansNum Integer,");
-		sql.append("StatusNum Integer,");
-		sql.append("IdoNum Integer,");
-		sql.append("FavouritesNum Integer,");
-		sql.append("Tagid Integer,");
-		sql.append("Eduid Integer,");
-		sql.append("Create_at DateTime,");
-		sql.append("following Bool,");
-		sql.append("Allow_all_act_msg Bool,");
-		sql.append("Geo_enabled Bool,");
-		sql.append("Allow_all_comment Bool,");
-		sql.append("Avatar_large Nvarchar(50),");
-		sql.append("Verified_reason Nvarchar(100),");
-		sql.append("Follow_me Bool,");
-		sql.append("Bi_followers_count Integer,");
+		// sql.append("FansNum Integer,");
+		// sql.append("StatusNum Integer,");
+		// sql.append("IdoNum Integer,");
+		// sql.append("FavouritesNum Integer,");
+		// sql.append("Tagid Integer,");
+		// sql.append("Eduid Integer,");
+		// sql.append("Create_at DateTime,");
+		// sql.append("following Bool,");
+		// sql.append("Allow_all_act_msg Bool,");
+		// sql.append("Geo_enabled Bool,");
+		// sql.append("Allow_all_comment Bool,");
+		// sql.append("Avatar_large Nvarchar(50),");
+		// sql.append("Verified_reason Nvarchar(100),");
+		// sql.append("Follow_me Bool,");
+		// sql.append("Bi_followers_count Integer,");
+		sql.append("AccessToken Nvarchar(50),");
+		sql.append("SecretToken Nvarchar(50),");
 		sql.append("WeiboType Integer");
 		sql.append(")");
 
 		// Status
 		sql.append("Create Table if not exists" + tbl_Status);
-		sql.append(" ( Id Long Primary key,");
-		sql.append(" ( Text Nvarchar(150),");
-		sql.append(" ( OriginText Nvarchar(150),");
-		sql.append(" ( IsTruncated Boolean,");
-		sql.append(" ( Create_At DateTime,");
-		sql.append(" ( InReplyToStatusId Long,");
-		sql.append(" ( InReplyToUserId Long,");
-		sql.append(" ( IsFavorited Boolean,");
-		sql.append(" ( InReplyToScreenName Nvarchar(10),");
-		sql.append(" ( Latitude Double,");
-		sql.append(" ( Longitude Double,");
-		sql.append(" ( Thumbnail_Pic Nvarchar(50),");
-		sql.append(" ( BMiddle_pic Nvarchar(50),");
-		sql.append(" ( Origin_Pic Nvarchar(50),");
-		sql.append(" ( Rtweeted_Status Long,");
-		sql.append(" ( uid Integer,");
-		sql.append(" ( self Boolean,");
-		sql.append(" ( Type Integer");
-
+		sql.append("  Id Long Primary key,");
+		sql.append("  Text Nvarchar(150),");
+		sql.append("  OriginText Nvarchar(150),");
+		sql.append("  IsTruncated Boolean,");
+		sql.append("  Create_At DateTime,");
+		// sql.append("  InReplyToStatusId Long,");
+		// sql.append("  InReplyToUserId Long,");
+		// sql.append("  IsFavorited Boolean,");
+		// sql.append("  InReplyToScreenName Nvarchar(10),");
+		// sql.append("  Latitude Double,");
+		// sql.append("  Longitude Double,");
+		sql.append("  Thumbnail_Pic Nvarchar(50),");
+		// sql.append("  BMiddle_pic Nvarchar(50),");
+		// sql.append("  Origin_Pic Nvarchar(50),");
+		sql.append(" Rtweeted_Status Long,");
+		sql.append(" comments_count Integer,");
+		sql.append("  uid Integer,");
+		sql.append("  self Boolean,");
+		sql.append("  Type Integer,");
+		sql.append("WeiboType Integer");
 		sql.append(")");
 
 		// Emotion
-		sql.append("Create Table if not exists" + tbl_Emotions);
-		sql.append(" ( Id Long Primary key,");
-		sql.append(" ( Type Integer,");
-		sql.append(" ( Icon Blob,");
-		sql.append(" ( Phrase Nvarchar(20),");
-		sql.append(" ( Url Nvarchar(50)");
+		// sql.append("Create Table if not exists" + tbl_Emotions);
+		// sql.append(" ( Id Long Primary key,");
+		// sql.append(" ( Type Integer,");
+		// sql.append(" ( Icon Blob,");
+		// sql.append(" ( Phrase Nvarchar(20),");
+		// sql.append(" ( Url Nvarchar(50)");
+		//
+		// sql.append(")");
 
-		sql.append(")");
+		// // Code_Location
+		// sql.append("Create Table if not exists" + tbl_Code_Location);
+		// sql.append(" ( Id Long Primary key,");
+		// sql.append(" ( Code Long,");
+		// sql.append(" ( Icon Blob,");
+		// sql.append(" ( Location Nvarchar(50)");
+		//
+		// sql.append(")");
+		//
+		// // Comments
+		// sql.append("Create Table if not exists" + tbl_Comments);
+		// sql.append(" ( Id Long Primary key,");
+		// sql.append(" ( Create_at Datetime,");
+		// sql.append(" ( Text Nvarchar(150,");
+		// sql.append(" ( Source Nvarchar(50),");
+		// sql.append(" ( Uid Integer,");
+		// sql.append(" ( Mid Integer,");
+		// sql.append(" ( Status_id Long,");
+		// sql.append(" ( Reply_Comments Nvarchar(150)");
+		//
+		// sql.append(")");
 
-		// Code_Location
-		sql.append("Create Table if not exists" + tbl_Code_Location);
-		sql.append(" ( Id Long Primary key,");
-		sql.append(" ( Code Long,");
-		sql.append(" ( Icon Blob,");
-		sql.append(" ( Location Nvarchar(50)");
-
-		sql.append(")");
-
-		// Comments
-		sql.append("Create Table if not exists" + tbl_Comments);
-		sql.append(" ( Id Long Primary key,");
-		sql.append(" ( Create_at Datetime,");
-		sql.append(" ( Text Nvarchar(150,");
-		sql.append(" ( Source Nvarchar(50),");
-		sql.append(" ( Uid Integer,");
-		sql.append(" ( Mid Integer,");
-		sql.append(" ( Status_id Long,");
-		sql.append(" ( Reply_Comments Nvarchar(150)");
-
-		sql.append(")");
-
-		// Education
-		sql.append("Create Table if not exists" + tbl_Education);
-		sql.append(" ( Id Inetger Primary key,");
-		sql.append(" ( uid Integer,");
-		sql.append(" ( Year Integer,");
-		sql.append(" ( Schoolid Integer,");
-		sql.append(" ( Departmentid Integer,");
-		sql.append(" ( Level Integer");
-
-		sql.append(")");
-
-		// Tag
-		sql.append("Create Table if not exists" + tbl_Tag);
-		sql.append(" ( Id Inetger Primary key,");
-		sql.append(" ( Name Nvarchar(50)");
-
-		sql.append(")");
+		// // Education
+		// sql.append("Create Table if not exists" + tbl_Education);
+		// sql.append(" ( Id Inetger Primary key,");
+		// sql.append(" ( uid Integer,");
+		// sql.append(" ( Year Integer,");
+		// sql.append(" ( Schoolid Integer,");
+		// sql.append(" ( Departmentid Integer,");
+		// sql.append(" ( Level Integer");
+		//
+		// sql.append(")");
+		//
+		// // Tag
+		// sql.append("Create Table if not exists" + tbl_Tag);
+		// sql.append(" ( Id Inetger Primary key,");
+		// sql.append(" ( Name Nvarchar(50)");
+		//
+		// sql.append(")");
 
 		// Messages
-		sql.append("Create Table if not exists" + tbl_Messages);
-		sql.append(" ( Id Inetger Primary key,");
-		sql.append(" ( Text Nvarchar(150),");
-		sql.append(" ( OriginText Nvarchar(150),");
-		sql.append(" ( Count Integer,");
-		sql.append(" ( From Nvarchar(100),");
-		sql.append(" ( Image Nvarchar(50),");
-		sql.append(" ( Name Nvarchar(20),");
-		sql.append(" ( Nick Nvarchar(10),");
-		sql.append(" ( Self Boolean,");
-		sql.append(" ( Timestamp Datetime,");
-		sql.append(" ( Type Integer,");
-		sql.append(" ( Head Nvarchar(50),");
-		sql.append(" ( Location Nvarchar(100),");
-		sql.append(" ( Geo Nvarchar(50),");
-		sql.append(" ( Isvip Boolean");
+		// sql.append("Create Table if not exists" + tbl_Messages);
+		// sql.append(" ( Id Inetger Primary key,");
+		// sql.append(" ( Text Nvarchar(150),");
+		// sql.append(" ( OriginText Nvarchar(150),");
+		// sql.append(" ( Count Integer,");
+		// sql.append(" ( From Nvarchar(100),");
+		// sql.append(" ( Image Nvarchar(50),");
+		// sql.append(" ( Name Nvarchar(20),");
+		// sql.append(" ( Nick Nvarchar(10),");
+		// sql.append(" ( Self Boolean,");
+		// sql.append(" ( Timestamp Datetime,");
+		// sql.append(" ( Type Integer,");
+		// sql.append(" ( Head Nvarchar(50),");
+		// sql.append(" ( Location Nvarchar(100),");
+		// sql.append(" ( Geo Nvarchar(50),");
+		// sql.append(" ( Isvip Boolean");
+		//
+		// sql.append(")");
+		//
+		// // LoginUser
+		// sql.append("Create Table if not exists" + tbl_LoginUser);
+		// sql.append(" ( Uid Inetger ,");
+		// sql.append(" ( AccessToken Nvarchar(50),");
+		// sql.append(" ( AccessSecret Nvarchar(50),");
+		// sql.append(" ( IsOnline Boolean,");
+		// sql.append(" ( LastLogOut DateTime,");
+		// sql.append(" ( CurrentLogin DateTime");
 
-		sql.append(")");
-
-		// LoginUser
-		sql.append("Create Table if not exists" + tbl_LoginUser);
-		sql.append(" ( Uid Inetger ,");
-		sql.append(" ( AccessToken Nvarchar(50),");
-		sql.append(" ( AccessSecret Nvarchar(50),");
-		sql.append(" ( IsOnline Boolean,");
-		sql.append(" ( LastLogOut DateTime,");
-		sql.append(" ( CurrentLogin DateTime");
-
-		sql.append(")");
+		// sql.append(")");
 
 		// Friends
-		sql.append("Create Table if not exists" + tbl_Friends);
-		sql.append(" ( Id Integer Primary key,");
-		sql.append("Name Nvarchar(20),");
-		sql.append("Nick Nvarchar(10),");
-		sql.append("Uid Integer,");
-		sql.append("URL Nvarchar(50),");
-		sql.append("Domain Nvarchar(50),");
-		sql.append("Head Nvarchar(50),");
-		sql.append("Location Nvarchar(50),");
-		sql.append("Isvip Bool,");
-		sql.append("Isent Bool,");
-		sql.append("Email Nvarchar(50),");
-		sql.append("Introduction Nvarchar(100),");
-		sql.append("Birth_year Integer,");
-		sql.append("Birth_month Integer,");
-		sql.append("Birth_day Integer,");
-		sql.append("Country_code Integer,");
-		sql.append("Province_code Integer,");
-		sql.append("City_code Integer,");
-		sql.append("Sex Integer,");
-		sql.append("FansNum Integer,");
-		sql.append("StatusNum Integer,");
-		sql.append("IdoNum Integer,");
-		sql.append("FavouritesNum Integer,");
-		sql.append("Tagid Integer,");
-		sql.append("Eduid Integer,");
-		sql.append("Create_at DateTime,");
-		sql.append("Following Bool,");
-		sql.append("Allow_all_act_msg Bool,");
-		sql.append("Geo_enabled Bool,");
-		sql.append("Allow_all_comment Bool,");
-		sql.append("Avatar_large Nvarchar(50),");
-		sql.append("Verified_reason Nvarchar(100),");
-		sql.append("Follow_me Bool,");
-		sql.append("Bi_followers_count Integer,");
-		sql.append("Online_status Integer,");
-		sql.append("WeiboType Integer");
-		sql.append(")");
+		// sql.append("Create Table if not exists" + tbl_Friends);
+		// sql.append(" ( Id Integer Primary key,");
+		// sql.append("Name Nvarchar(20),");
+		// sql.append("Nick Nvarchar(10),");
+		// sql.append("Uid Integer,");
+		// sql.append("URL Nvarchar(50),");
+		// sql.append("Domain Nvarchar(50),");
+		// sql.append("Head Nvarchar(50),");
+		// sql.append("Location Nvarchar(50),");
+		// sql.append("Isvip Bool,");
+		// sql.append("Isent Bool,");
+		// sql.append("Email Nvarchar(50),");
+		// sql.append("Introduction Nvarchar(100),");
+		// sql.append("Birth_year Integer,");
+		// sql.append("Birth_month Integer,");
+		// sql.append("Birth_day Integer,");
+		// sql.append("Country_code Integer,");
+		// sql.append("Province_code Integer,");
+		// sql.append("City_code Integer,");
+		// sql.append("Sex Integer,");
+		// sql.append("FansNum Integer,");
+		// sql.append("StatusNum Integer,");
+		// sql.append("IdoNum Integer,");
+		// sql.append("FavouritesNum Integer,");
+		// sql.append("Tagid Integer,");
+		// sql.append("Eduid Integer,");
+		// sql.append("Create_at DateTime,");
+		// sql.append("Following Bool,");
+		// sql.append("Allow_all_act_msg Bool,");
+		// sql.append("Geo_enabled Bool,");
+		// sql.append("Allow_all_comment Bool,");
+		// sql.append("Avatar_large Nvarchar(50),");
+		// sql.append("Verified_reason Nvarchar(100),");
+		// sql.append("Follow_me Bool,");
+		// sql.append("Bi_followers_count Integer,");
+		// sql.append("Online_status Integer,");
+		// sql.append("WeiboType Integer");
+		// sql.append(")");
 
 		// Followers
-		sql.append("Create Table if not exists" + tbl_Followers);
-		sql.append(" ( Id Integer Primary key,");
-		sql.append("Name Nvarchar(20),");
-		sql.append("Nick Nvarchar(10),");
-		sql.append("Uid Integer,");
-		sql.append("Url Nvarchar(50),");
-		sql.append("Domain Nvarchar(50),");
-		sql.append("Head Nvarchar(50),");
-		sql.append("Location Nvarchar(50),");
-		sql.append("Isvip Bool,");
-		sql.append("Isent Bool,");
-		sql.append("Email Nvarchar(50),");
-		sql.append("Introduction Nvarchar(100),");
-		sql.append("Birth_year Integer,");
-		sql.append("Birth_month Integer,");
-		sql.append("Birth_day Integer,");
-		sql.append("Country_code Integer,");
-		sql.append("Province_code Integer,");
-		sql.append("City_code Integer,");
-		sql.append("Sex Integer,");
-		sql.append("FansNum Integer,");
-		sql.append("StatusNum Integer,");
-		sql.append("IdoNum Integer,");
-		sql.append("FavouritesNum Integer,");
-		sql.append("Tagid Integer,");
-		sql.append("Eduid Integer,");
-		sql.append("Create_at DateTime,");
-		sql.append("Following Bool,");
-		sql.append("Allow_all_act_msg Bool,");
-		sql.append("Geo_enabled Bool,");
-		sql.append("Allow_all_comment Bool,");
-		sql.append("Avatar_large Nvarchar(50),");
-		sql.append("Verified_reason Nvarchar(100),");
-		sql.append("Follow_me Bool,");
-		sql.append("Bi_followers_count Integer,");
-		sql.append("Online_status Integer,");
-		sql.append("WeiboType Integer");
-		sql.append(")");
+		// sql.append("Create Table if not exists" + tbl_Followers);
+		// sql.append(" ( Id Integer Primary key,");
+		// sql.append("Name Nvarchar(20),");
+		// sql.append("Nick Nvarchar(10),");
+		// sql.append("Uid Integer,");
+		// sql.append("Url Nvarchar(50),");
+		// sql.append("Domain Nvarchar(50),");
+		// sql.append("Head Nvarchar(50),");
+		// sql.append("Location Nvarchar(50),");
+		// sql.append("Isvip Bool,");
+		// sql.append("Isent Bool,");
+		// sql.append("Email Nvarchar(50),");
+		// sql.append("Introduction Nvarchar(100),");
+		// sql.append("Birth_year Integer,");
+		// sql.append("Birth_month Integer,");
+		// sql.append("Birth_day Integer,");
+		// sql.append("Country_code Integer,");
+		// sql.append("Province_code Integer,");
+		// sql.append("City_code Integer,");
+		// sql.append("Sex Integer,");
+		// sql.append("FansNum Integer,");
+		// sql.append("StatusNum Integer,");
+		// sql.append("IdoNum Integer,");
+		// sql.append("FavouritesNum Integer,");
+		// sql.append("Tagid Integer,");
+		// sql.append("Eduid Integer,");
+		// sql.append("Create_at DateTime,");
+		// sql.append("Following Bool,");
+		// sql.append("Allow_all_act_msg Bool,");
+		// sql.append("Geo_enabled Bool,");
+		// sql.append("Allow_all_comment Bool,");
+		// sql.append("Avatar_large Nvarchar(50),");
+		// sql.append("Verified_reason Nvarchar(100),");
+		// sql.append("Follow_me Bool,");
+		// sql.append("Bi_followers_count Integer,");
+		// sql.append("Online_status Integer,");
+		// sql.append("WeiboType Integer");
+		// sql.append(")");
 
 		db.execSQL(sql.toString());
 	}
