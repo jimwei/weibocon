@@ -82,6 +82,7 @@ public class Status {
 	/**
 	 * @param text
 	 *            the text to set
+	 * @return
 	 */
 	public void setText(String text) {
 		Text = text;
