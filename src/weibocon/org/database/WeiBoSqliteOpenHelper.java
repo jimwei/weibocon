@@ -76,7 +76,7 @@ public class WeiBoSqliteOpenHelper extends SQLiteOpenHelper {
 		StringBuilder sql = new StringBuilder();
 
 		// User
-		sql.append("Create Table if not exists" + tbl_UserInfo);
+		sql.append("Create Table if not exists " + tbl_UserInfo);
 		sql.append(" ( Id Integer Primary key,");
 		sql.append("Uid Integer,");
 		sql.append("Name Nvarchar(20),");
@@ -115,10 +115,12 @@ public class WeiBoSqliteOpenHelper extends SQLiteOpenHelper {
 		sql.append("SecretToken Nvarchar(50),");
 		sql.append("WeiboType Integer");
 		sql.append(")");
+		db.execSQL(sql.toString());
 
+		sql.delete(0, sql.length());
 		// Status
-		sql.append("Create Table if not exists" + tbl_Status);
-		sql.append("  Id Long Primary key,");
+		sql.append("Create Table if not exists " + tbl_Status);
+		sql.append(" ( Id Long Primary key,");
 		sql.append("  Text Nvarchar(150),");
 		sql.append("  OriginText Nvarchar(150),");
 		sql.append("  IsTruncated Boolean,");
@@ -133,13 +135,14 @@ public class WeiBoSqliteOpenHelper extends SQLiteOpenHelper {
 		// sql.append("  BMiddle_pic Nvarchar(50),");
 		// sql.append("  Origin_Pic Nvarchar(50),");
 		sql.append(" Rtweeted_Status Long,");
-		sql.append(" comments_count Integer,");
-		sql.append("  uid Integer,");
-		sql.append("  self Boolean,");
+		sql.append(" Comments_count Integer,");
+		sql.append("  Uid Integer,");
+		sql.append("  Self Boolean,");
 		sql.append("  Type Integer,");
 		sql.append("WeiboType Integer");
 		sql.append(")");
 
+		db.execSQL(sql.toString());
 		// Emotion
 		// sql.append("Create Table if not exists" + tbl_Emotions);
 		// sql.append(" ( Id Long Primary key,");
@@ -301,7 +304,6 @@ public class WeiBoSqliteOpenHelper extends SQLiteOpenHelper {
 		// sql.append("WeiboType Integer");
 		// sql.append(")");
 
-		db.execSQL(sql.toString());
 	}
 
 	@Override
